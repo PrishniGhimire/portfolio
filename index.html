@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prishi Ghimire — UI/UX Designer</title>
+  <title>Prishni Ghimire — UI/UX Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -437,7 +437,68 @@
       background: linear-gradient(to right, var(--coral), var(--lavender));
     }
 
-    /* ── CONTACT ── */
+    /* ── WRITING ── */
+    #writing { background: var(--bg); }
+    .writing-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+    .writing-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .writing-text p strong { color: var(--text); }
+    .writing-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+    .writing-card:hover { border-color: var(--coral); }
+    .writing-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .writing-card h4 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .writing-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .writing-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--coral);
+    }
+    .writing-link::after { content: '→'; transition: transform 0.2s; }
+    .writing-card:hover .writing-link::after { transform: translateX(4px); }
+    .writing-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,107,91,0.12);
+      color: var(--coral);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
     #contact { background: var(--bg2); }
     .contact-inner {
       max-width: 700px;
@@ -508,11 +569,12 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Prishi<span>.</span></div>
+    <div class="nav-logo">Prishni<span>.</span></div>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
+      <a href="#writing">Writing</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -522,7 +584,7 @@
     <div class="hero-left">
       <div class="hero-tag">Available for freelance</div>
       <h1 class="hero-name">
-        Prishi<br>
+        Prishni<br>
         <em>Ghimire</em>
       </h1>
       <p class="hero-desc">
@@ -536,7 +598,7 @@
     <div class="hero-right">
       <div class="hero-card">
         <div class="hero-card-img">PG</div>
-        <h3>Prishi Ghimire</h3>
+        <h3>Prishni Ghimire</h3>
         <p>UI/UX Designer · Kathmandu, Nepal</p>
         <div class="tools-row">
           <span class="tool-chip">Figma</span>
@@ -751,7 +813,7 @@
     <h2 class="section-title">Designer, <em>researcher,</em><br>problem-solver</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Hi! I'm <strong>Prishi Ghimire</strong>, a UI/UX designer based in <strong>Kathmandu, Nepal</strong>. I care deeply about making digital products that are not only beautiful, but genuinely usable by real people.</p>
+        <p>Hi! I'm <strong>Prishni Ghimire</strong>, a UI/UX designer based in <strong>Kathmandu, Nepal</strong>. I care deeply about making digital products that are not only beautiful, but genuinely usable by real people.</p>
         <p>My background combines design thinking with a strong understanding of user psychology — I believe the best interfaces are the ones users never have to think about.</p>
         <p>When I'm not pushing pixels, you'll find me hiking around the Kathmandu Valley, sketching in my notebook, or exploring local art exhibitions.</p>
         <div style="margin-top:2rem;">
@@ -787,6 +849,31 @@
     </div>
   </section>
 
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="section-label">Beyond Design</div>
+    <h2 class="section-title">I also write — <em>words matter</em></h2>
+    <div class="writing-inner">
+      <div class="writing-text">
+        <p>Before I was designing interfaces, I was writing. I worked as a <strong>freelance content writer for over a year</strong>, crafting articles across a range of topics — from lifestyle and culture to research-driven pieces.</p>
+        <p>Writing made me a better designer. It taught me to think clearly, communicate purposefully, and understand what people actually want to read — and use. Good design and good writing share the same goal: <strong>make it effortless for the reader.</strong></p>
+        <p>My articles were published on <strong>Wikibelll</strong>, where you can read my work below.</p>
+        <div style="margin-top: 2rem;">
+          <a href="https://wikibelll.com/author/Prishni" target="_blank" class="btn-primary">Read my articles →</a>
+        </div>
+      </div>
+      <div>
+        <a href="https://wikibelll.com/author/Prishni" target="_blank" class="writing-card" style="display:block; text-decoration:none; color:inherit;">
+          <div class="writing-badge">Published Author</div>
+          <div class="writing-card-icon">✍️</div>
+          <h4>Articles on Wikibelll</h4>
+          <p>Freelance content writer with over a year of experience writing engaging, research-backed articles published on Wikibelll.com.</p>
+          <span class="writing-link">Visit my author page</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
@@ -796,8 +883,8 @@
       <div class="contact-links">
         <a class="contact-chip" href="mailto:ghimireprishni@gmail.com">📧 Email me</a>
         <a class="contact-chip" href="https://wa.me/9779869613452" target="_blank">💬 WhatsApp</a>
-        <a class="contact-chip" href="https://behance.net" target="_blank">🎨 Behance</a>
-        <a class="contact-chip" href="https://dribbble.com" target="_blank">🏀 Dribbble</a>
+        <a class="contact-chip" href="https://www.linkedin.com/in/prishni-ghimire-96327b252/" target="_blank">💼 LinkedIn</a>
+        <a class="contact-chip" href="https://www.behance.net/prishnighimiredesign" target="_blank">🎨 Behance</a>
       </div>
       <a href="mailto:ghimireprishni@gmail.com" class="contact-email">ghimireprishni@gmail.com</a>
       <p style="margin-top:0.75rem; color:var(--muted); font-size:0.9rem;">📱 WhatsApp: <a href="https://wa.me/9779869613452" style="color:var(--coral);" target="_blank">+977 9869613452</a> — for work enquiries</p>
@@ -806,7 +893,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2025 Prishi Ghimire. Designed & coded with ♥ in Kathmandu.</span>
+    <span>© 2025 Prishni Ghimire. Designed & coded with ♥ in Kathmandu.</span>
     <span><a href="mailto:ghimireprishni@gmail.com" style="color:var(--muted);">ghimireprishni@gmail.com</a></span>
   </footer>
 
