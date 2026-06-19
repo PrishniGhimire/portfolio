@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prishi Ghimire — UI/UX Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0F1117;
+      --bg2:      #181C24;
+      --text:     #F0EDE8;
+      --muted:    #8A8693;
+      --coral:    #FF6B5B;
+      --lavender: #9B8EC4;
+      --border:   rgba(240,237,232,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 5vw;
+      backdrop-filter: blur(16px);
+      background: rgba(15,17,23,0.75);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--coral); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 10rem 5vw 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-left {}
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      border: 1px solid var(--coral);
+      padding: 0.35rem 0.85rem;
+      border-radius: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--lavender);
+    }
+    .hero-desc {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 42ch;
+      line-height: 1.7;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--lavender); transform: translateY(-2px); }
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .hero-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      width: 100%;
+      max-width: 380px;
+    }
+    .hero-card-img {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), var(--lavender));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .hero-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+    .hero-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.25rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--coral);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+    .tools-row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .tool-chip {
+      background: rgba(155,142,196,0.12);
+      color: var(--lavender);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 1rem;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      padding: 1rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: scroll 25s linear infinite;
+      width: max-content;
+    }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-item {
+      white-space: nowrap;
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .marquee-dot { color: var(--coral); font-style: normal; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 5vw; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--lavender); }
+    .section-sub {
+      color: var(--muted);
+      max-width: 55ch;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ── PROJECTS ── */
+    #work { background: var(--bg); }
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--coral);
+    }
+    .project-card.wide { grid-column: span 2; }
+    .project-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-thumb-1 { background: linear-gradient(135deg, #1a1033 0%, #3d2d7a 100%); }
+    .project-thumb-2 { background: linear-gradient(135deg, #1a2c1a 0%, #2d6e3f 100%); }
+    .project-thumb-3 { background: linear-gradient(135deg, #2c1a1a 0%, #7a3030 100%); }
+    .project-mock {
+      width: 65%;
+      background: rgba(255,255,255,0.07);
+      border-radius: 0.75rem;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .mock-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.2); margin-bottom: 8px; }
+    .mock-bar.short { width: 55%; }
+    .mock-bar.accent { background: var(--coral); width: 35%; }
+    .mock-row { display: flex; gap: 8px; margin-top: 10px; }
+    .mock-box { flex: 1; height: 40px; border-radius: 6px; background: rgba(255,255,255,0.1); }
+    .mock-box.accent-box { background: rgba(255,107,91,0.3); }
+    .project-body { padding: 1.5rem; }
+    .project-tags {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .project-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(155,142,196,0.12);
+      color: var(--lavender);
+      padding: 0.25rem 0.65rem;
+      border-radius: 1rem;
+    }
+    .project-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    /* iframe embed thumbnail */
+    .project-embed {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+      display: block;
+      background: var(--bg);
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--coral);
+    }
+    .project-link::after { content: '→'; transition: transform 0.2s; }
+    .project-card:hover .project-link::after { transform: translateX(4px); }
+
+    /* ── PROCESS ── */
+    #process { background: var(--bg2); }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .process-step {
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+    .process-step:hover { border-color: var(--lavender); }
+    .step-icon {
+      width: 48px; height: 48px;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, rgba(255,107,91,0.15), rgba(155,142,196,0.15));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .step-num {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .about-text p strong { color: var(--text); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .skill-item {
+      padding: 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+    }
+    .skill-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .skill-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+    }
+    .skill-bar-fill {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, var(--coral), var(--lavender));
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg2); }
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .contact-inner .section-label { justify-content: center; display: flex; }
+    .contact-inner .section-title { margin-bottom: 1rem; }
+    .contact-inner .section-sub { margin: 0 auto 2.5rem; }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-chip:hover { border-color: var(--coral); color: var(--coral); }
+    .contact-email {
+      margin-top: 2rem;
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .contact-email:hover { color: var(--coral); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 5vw;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 8rem; gap: 2.5rem; }
+      .hero-right { justify-content: flex-start; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.wide { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.75rem; }
+    }
+    @media (max-width: 480px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Prishi<span>.</span></div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Available for freelance</div>
+      <h1 class="hero-name">
+        Prishi<br>
+        <em>Ghimire</em>
+      </h1>
+      <p class="hero-desc">
+        UI/UX Designer crafting digital experiences that feel effortless — from research and wireframes all the way to pixel-perfect interfaces.
+      </p>
+      <div class="hero-ctas">
+        <a href="#work" class="btn-primary">View my work</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-img">PG</div>
+        <h3>Prishi Ghimire</h3>
+        <p>UI/UX Designer · Kathmandu, Nepal</p>
+        <div class="tools-row">
+          <span class="tool-chip">Figma</span>
+          <span class="tool-chip">Prototyping</span>
+          <span class="tool-chip">User Research</span>
+          <span class="tool-chip">Design Systems</span>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8+</div>
+            <div class="stat-label">Clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee">
+      <span class="marquee-item">User Research <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Wireframing <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Prototyping <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Figma <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Design Systems <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Usability Testing <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Information Architecture <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Interaction Design <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Visual Design <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">User Research <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Wireframing <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Prototyping <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Figma <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Design Systems <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Usability Testing <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Information Architecture <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Interaction Design <span class="marquee-dot">✦</span></span>
+      <span class="marquee-item">Visual Design <span class="marquee-dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="projects-header">
+      <div>
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-title">Projects I'm <em>proud of</em></h2>
+      </div>
+      <p class="section-sub">Real problems, real users, real impact.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Project 1 — NCAWU NGO Website -->
+      <div class="project-card">
+        <iframe class="project-embed"
+          src="https://www.behance.net/embed/project/206560787?ilo0=1"
+          allowfullscreen loading="lazy" frameborder="0"
+          allow="clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">NGO</span>
+            <span class="project-tag">Web Design</span>
+            <span class="project-tag">Wireframing</span>
+          </div>
+          <div class="project-title">NCAWU — NGO Website</div>
+          <p class="project-desc">End-to-end website design for an NGO — handled color theory, typography, wireframes, and the full visual identity from scratch.</p>
+          <a class="project-link" href="https://www.behance.net/gallery/206560787" target="_blank">View on Behance</a>
+        </div>
+      </div>
+
+      <!-- Project 2 — Raj Trade Concern -->
+      <div class="project-card">
+        <iframe class="project-embed"
+          src="https://www.behance.net/embed/project/206561119?ilo0=1"
+          allowfullscreen loading="lazy" frameborder="0"
+          allow="clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Client Work</span>
+            <span class="project-tag">Web Design</span>
+            <span class="project-tag">Interaction</span>
+          </div>
+          <div class="project-title">Raj Trade Concern</div>
+          <p class="project-desc">Cloned and elevated a client's existing website with interactive design enhancements tailored exactly to their business needs.</p>
+          <a class="project-link" href="https://www.behance.net/gallery/206561119" target="_blank">View on Behance</a>
+        </div>
+      </div>
+
+      <!-- Project 3 — Venue Management System -->
+      <div class="project-card">
+        <iframe class="project-embed"
+          src="https://www.behance.net/embed/project/206561333?ilo0=1"
+          allowfullscreen loading="lazy" frameborder="0"
+          allow="clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Web App</span>
+            <span class="project-tag">Booking System</span>
+            <span class="project-tag">UX Design</span>
+          </div>
+          <div class="project-title">Venue Management System</div>
+          <p class="project-desc">Designed a web platform for booking venues across different event types — focused on clear user flows and a smooth booking experience.</p>
+          <a class="project-link" href="https://www.behance.net/gallery/206561333" target="_blank">View on Behance</a>
+        </div>
+      </div>
+
+      <!-- Project 4 — Venue Management Form Design -->
+      <div class="project-card">
+        <iframe class="project-embed"
+          src="https://www.behance.net/embed/project/206561559?ilo0=1"
+          allowfullscreen loading="lazy" frameborder="0"
+          allow="clipboard-write"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Form Design</span>
+            <span class="project-tag">Admin UX</span>
+            <span class="project-tag">Web App</span>
+          </div>
+          <div class="project-title">Venue Management — Form Design</div>
+          <p class="project-desc">Designed the admin and customer-facing forms for the Venue Management System, prioritizing clarity, validation feedback, and ease of use.</p>
+          <a class="project-link" href="https://www.behance.net/gallery/206561559" target="_blank">View on Behance</a>
+        </div>
+      </div>
+
+      <!-- Project 5 — GSNMC (wide) -->
+      <div class="project-card wide">
+        <iframe class="project-embed"
+          style="border: none;"
+          src="https://embed.figma.com/proto/vOsLdD1bAeDZmdspXFylHD/DashStack---Free-Admin-Dashboard-UI-Kit---Admin---Dashboard-Ui-Kit---Admin-Dashboard--Community-?node-id=1206-3495&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A11556&starting-point-node-id=1206%3A3495&embed-host=share"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Organisation</span>
+            <span class="project-tag">Web Design</span>
+            <span class="project-tag">Figma</span>
+          </div>
+          <div class="project-title">GSNMC — Australian Nepali Community Website</div>
+          <p class="project-desc">Designed the website for an Australian-Nepali people's organisation — crafting a welcoming, accessible identity that bridges two cultures.</p>
+          <a class="project-link" href="https://www.figma.com/proto/vOsLdD1bAeDZmdspXFylHD" target="_blank">Open in Figma</a>
+        </div>
+      </div>
+
+      <!-- Project 6 — Mindpurify Yoga App (wide) -->
+      <div class="project-card wide">
+        <iframe class="project-embed"
+          style="border: none;"
+          src="https://embed.figma.com/proto/Y437RtpDxJTPca0lZSx8B7/Untitled?node-id=30-85&embed-host=share"
+          allowfullscreen loading="lazy"></iframe>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Mobile App</span>
+            <span class="project-tag">Wellness</span>
+            <span class="project-tag">Figma</span>
+          </div>
+          <div class="project-title">Mindpurify — Yoga & Wellness App</div>
+          <p class="project-desc">Designed a calming, intuitive mobile app for yoga and mindfulness — with a focus on serene visuals, smooth navigation, and an experience that feels as peaceful as the practice itself.</p>
+          <a class="project-link" href="https://www.figma.com/proto/Y437RtpDxJTPca0lZSx8B7" target="_blank">Open in Figma</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="section-label">How I work</div>
+    <h2 class="section-title">My design <em>process</em></h2>
+    <p class="section-sub">I follow a human-centered approach — every decision is grounded in research, not assumptions.</p>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-icon">🔍</div>
+        <div class="step-num">Step 01</div>
+        <div class="step-title">Discover</div>
+        <p class="step-desc">User interviews, competitive analysis, and heuristic evaluations to understand the real problem space.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">💡</div>
+        <div class="step-num">Step 02</div>
+        <div class="step-title">Define</div>
+        <p class="step-desc">Synthesizing insights into clear problem statements, personas, and journey maps that guide every decision.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">✏️</div>
+        <div class="step-num">Step 03</div>
+        <div class="step-title">Design</div>
+        <p class="step-desc">Sketches → wireframes → high-fidelity prototypes in Figma, with rapid iteration based on stakeholder feedback.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-icon">🚀</div>
+        <div class="step-num">Step 04</div>
+        <div class="step-title">Deliver</div>
+        <p class="step-desc">Developer handoff with annotated specs, design tokens, and continued collaboration through launch and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About me</div>
+    <h2 class="section-title">Designer, <em>researcher,</em><br>problem-solver</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hi! I'm <strong>Prishi Ghimire</strong>, a UI/UX designer based in <strong>Kathmandu, Nepal</strong>. I care deeply about making digital products that are not only beautiful, but genuinely usable by real people.</p>
+        <p>My background combines design thinking with a strong understanding of user psychology — I believe the best interfaces are the ones users never have to think about.</p>
+        <p>When I'm not pushing pixels, you'll find me hiking around the Kathmandu Valley, sketching in my notebook, or exploring local art exhibitions.</p>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn-primary">Work with me →</a>
+        </div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-name">Figma / Prototyping</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">User Research</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Design Systems</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Interaction Design</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Visual Design</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">Accessibility (WCAG)</div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label">Get in touch</div>
+      <h2 class="section-title">Let's build something <em>together</em></h2>
+      <p class="section-sub">Open to freelance projects, full-time roles, and collaborations. I'd love to hear about what you're working on.</p>
+      <div class="contact-links">
+        <a class="contact-chip" href="mailto:ghimireprishni@gmail.com">📧 Email me</a>
+        <a class="contact-chip" href="https://wa.me/9779869613452" target="_blank">💬 WhatsApp</a>
+        <a class="contact-chip" href="https://behance.net" target="_blank">🎨 Behance</a>
+        <a class="contact-chip" href="https://dribbble.com" target="_blank">🏀 Dribbble</a>
+      </div>
+      <a href="mailto:ghimireprishni@gmail.com" class="contact-email">ghimireprishni@gmail.com</a>
+      <p style="margin-top:0.75rem; color:var(--muted); font-size:0.9rem;">📱 WhatsApp: <a href="https://wa.me/9779869613452" style="color:var(--coral);" target="_blank">+977 9869613452</a> — for work enquiries</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Prishi Ghimire. Designed & coded with ♥ in Kathmandu.</span>
+    <span><a href="mailto:ghimireprishni@gmail.com" style="color:var(--muted);">ghimireprishni@gmail.com</a></span>
+  </footer>
+
+</body>
+</html>
