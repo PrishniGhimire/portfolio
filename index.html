@@ -200,9 +200,9 @@
           <span class="tag">User Research</span><span class="tag">Digital Marketing</span>
         </div>
         <div class="stats">
-          <div><b>6</b><span>Featured projects</span></div>
+          <div><b id="statProjects">8</b><span>Projects</span></div>
           <div><b>3+</b><span>Years experience</span></div>
-          <div><b>5</b><span>Roles held</span></div>
+          <div><b id="statRoles">6</b><span>Roles &amp; volunteering</span></div>
         </div>
       </aside>
     </div>
@@ -230,7 +230,7 @@
       <div class="section-head reveal">
         <p class="eyebrow">Experience</p>
         <h2>Where I've <em>worked</em></h2>
-        <p>Design, marketing, teaching, and writing — a mix that shapes how I communicate and build.</p>
+        <p>Design, marketing, teaching, writing, and volunteering — a mix that shapes how I communicate and build.</p>
       </div>
       <div class="timeline" id="timeline"></div>
     </div>
@@ -272,12 +272,12 @@
           <p>Bhaktapur Multiple Campus (Tribhuvan University) · 2019 – 2024</p>
           <p style="color:var(--muted);margin-top:8px">73.88% · Data Structures &amp; Algorithms, OOP, DBMS, Computer Architecture, AI, Computer Graphics, Software Engineering, Statistics</p>
         </div>
-        <div class="skill-group"><h4>Design</h4><div class="tags" style="justify-content:flex-start"><span class="tag">Figma</span><span class="tag">Canva</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Design Systems</span><span class="tag">Usability Testing</span><span class="tag">Accessibility (WCAG)</span></div></div>
+        <div class="skill-group"><h4>Design</h4><div class="tags" style="justify-content:flex-start"><span class="tag">Figma</span><span class="tag">Canva</span><span class="tag">Wireframing</span><span class="tag">Prototyping</span><span class="tag">Design Systems</span><span class="tag">Usability Testing</span><span class="tag">Accessibility (WCAG)</span><span class="tag">Video Editing (Adobe Premiere Pro)</span></div></div>
         <div class="skill-group"><h4>Development</h4><div class="tags" style="justify-content:flex-start"><span class="tag">Python</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">React</span><span class="tag">Git</span></div></div>
         <div class="skill-group"><h4>Marketing &amp; Tools</h4><div class="tags" style="justify-content:flex-start"><span class="tag">Social Media</span><span class="tag">Content Strategy</span><span class="tag">SEO Writing</span><span class="tag">CRM</span><span class="tag">Microsoft Office</span></div></div>
         <div class="skill-group"><h4>Languages</h4><div class="tags" style="justify-content:flex-start"><span class="tag">English</span><span class="tag">Nepali</span></div></div>
         <div class="skill-group"><h4>Certifications &amp; Activities</h4>
-          <div class="tags" style="justify-content:flex-start"><span class="tag">Fundamentals of Digital Marketing — Google Digital Garage (2023)</span><span class="tag">Participant, Xavier Model United Nations (2018)</span></div>
+          <div class="tags" style="justify-content:flex-start"><span class="tag">Fundamentals of Digital Marketing — Google Digital Garage (2023)</span><span class="tag">Participant, Xavier Model United Nations (2018)</span><span class="tag">Certificate of Appreciation — Crowd Management, Patan Temple, Krishna Janmashtami</span></div>
         </div>
       </div>
     </div>
@@ -321,7 +321,7 @@
 </main>
 
 <footer>
-  <div class="wrap">© <span id="year"></span> Prishni Ghimire. Designed &amp; coded in Kathmandu.</div>
+  <div class="wrap">© <span id="year"></span> Prishni Ghimire.</div>
 </footer>
 
 <script>
@@ -332,6 +332,11 @@
       tags: "Python · React · Machine Learning · Waterfall SDLC",
       desc: "Team-built banking application that predicts loan eligibility, developed over a semester (Oct 2023 – Jan 2024). I led front-end development in React and supported data preparation, model training, and testing in Python, collaborating with teammates to plan, integrate, and deliver the final system.",
       featured: true
+    },
+    {
+      title: "Movie Ticket Selling Website",
+      tags: "Python · E-commerce · Web Development",
+      desc: "A movie ticket selling website built with Python as a project for my e-commerce class."
     },
     {
       title: "NCAWU — NGO Website",
@@ -402,10 +407,15 @@
       role: "Content Writer (Part-time, Remote)", org: "Neptuer Tech · Remote",
       date: "Jan 2023 – Feb 2024",
       points: ["Researched assigned topics and wrote SEO-friendly articles published on wikibelll.com"]
+    },
+    {
+      role: "Nepal Scout Member (Volunteer)", org: "Nepal Scouts · Nepal",
+      date: "Volunteer",
+      points: ["Volunteered in crowd management at Patan Temple during Krishna Janmashtami", "Received a Certificate of Appreciation for this service"]
     }
   ];
 
-  const skills = ["User Research","Wireframing","Prototyping","Figma","Design Systems","Usability Testing","Information Architecture","Interaction Design","Visual Design","Social Media Marketing","Content Strategy","React","Python"];
+  const skills = ["User Research","Wireframing","Prototyping","Figma","Design Systems","Usability Testing","Information Architecture","Interaction Design","Visual Design","Social Media Marketing","Content Strategy","Video Editing","Adobe Premiere Pro","React","Python"];
 
   // ---------- Render ----------
   const grid = document.getElementById('projectGrid');
@@ -430,6 +440,8 @@
   const items = skills.map(s => `<span>${s} ✦</span>`).join('');
   document.getElementById('marquee').innerHTML = items + items;
   document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('statProjects').textContent = projects.length;
+  document.getElementById('statRoles').textContent = jobs.length;
 
   // ---------- Behaviour ----------
   const root = document.documentElement;
